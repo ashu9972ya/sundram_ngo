@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { Link as ScrollLink, Element, scroller } from "react-scroll";
 
 const Header = () => {
   const [isSticky, setIsSticky] = useState(false);
@@ -18,6 +19,15 @@ const Header = () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
+  const scrollTo = (element) => {
+    scroller.scrollTo(element, {
+      duration: 800,
+      delay: 0,
+      smooth: "easeInOutQuart",
+    });
+  };
+
   return (
     <div
       className={`navbar bg-base-100 gradient-header ${
@@ -48,63 +58,119 @@ const Header = () => {
             className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
           >
             <li>
-              <Link to={"/"} className="text-lg">
+              <ScrollLink
+                to="home"
+                onClick={() => scrollTo("home")}
+                className="text-lg"
+              >
                 Home
-              </Link>
+              </ScrollLink>
             </li>
             <li>
-              <Link to={"/about"} className="text-lg">
+              <ScrollLink
+                to="about"
+                onClick={() => scrollTo("about")}
+                className="text-lg"
+              >
                 About
-              </Link>
-              {/* <ul className="p-2">
-              <li><a>Submenu 1</a></li>
-              <li><a>Submenu 2</a></li>
-            </ul> */}
+              </ScrollLink>
             </li>
             <li>
-              <Link to={"/blog"} className="text-lg">
+              <ScrollLink
+                to="blog"
+                onClick={() => scrollTo("blog")}
+                className="text-lg"
+              >
                 Blog
-              </Link>
+              </ScrollLink>
             </li>
             <li>
-              <Link to={"/contact"} className="text-lg">
+              <ScrollLink
+                to="contact"
+                onClick={() => scrollTo("contact")}
+                className="text-lg"
+              >
                 Contact
-              </Link>
+              </ScrollLink>
             </li>
+            <li>
+              <ScrollLink
+                to="donate"
+                onClick={() => scrollTo("donate")}
+                className="text-lg"
+              >
+                Donate
+              </ScrollLink>
+            </li>
+            {/* <li>
+              <Link to={"/login"} className="text-lg">
+                Login
+              </Link>
+            </li> */}
           </ul>
         </div>
-        <Link to={"/"} className="btn btn-ghost text-2xl">
-          सुंदरम भैया पौधा वाले
-        </Link>
+        <ScrollLink
+          to="home"
+          onClick={() => scrollTo("home")}
+          className="btn btn-ghost text-2xl"
+        >
+          सुंदरम
+        </ScrollLink>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
           <li>
-            <Link to={"/"} className="text-lg">
+            <ScrollLink
+              to="home"
+              onClick={() => scrollTo("home")}
+              className="text-lg"
+            >
               Home
-            </Link>
+            </ScrollLink>
           </li>
           <li>
-            <Link to={"/about"} className="text-lg">
+            <ScrollLink
+              to="about"
+              onClick={() => scrollTo("about")}
+              className="text-lg"
+            >
               About
-            </Link>
+            </ScrollLink>
           </li>
           <li>
-            <Link to={"/blog"} className="text-lg">
+            <ScrollLink
+              to="blog"
+              onClick={() => scrollTo("blog")}
+              className="text-lg"
+            >
               Blog
-            </Link>
+            </ScrollLink>
           </li>
           <li>
-            <Link to={"/contact"} className="text-lg">
+            <ScrollLink
+              to="contact"
+              onClick={() => scrollTo("contact")}
+              className="text-lg"
+            >
               Contact us
-            </Link>
+            </ScrollLink>
           </li>
         </ul>
       </div>
-      <div className="navbar-end">
-        <Link to={"/donate"} className="btn text-lg">
+      <div className="navbar-end space-x-1">
+        <ScrollLink
+          to="donate"
+          onClick={() => scrollTo("donate")}
+          className="bg-green-500 text-black px-6 py-3 rounded-full hover:bg-gray-600 transition duration-300 ease-in-out"
+        >
           Donate
-        </Link>
+        </ScrollLink>
+        {/* <Link
+          to={"/Login"}
+          className="bg-blue-400 text-white px-6 py-3 rounded-full hover:bg-gray-600 transition duration-300 ease-in-out"
+        >
+          Login
+        </Link> */}
       </div>
     </div>
   );

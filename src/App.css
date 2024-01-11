@@ -3,4 +3,6 @@
     background: linear-gradient(to right, #3dc4b8, #7fcd9a); 
     /* color: white;  */
   }
-  
+ body{
+  height: 100vh;
+ }
